@@ -1,0 +1,47 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "delicifood",
+  "main": "worker-entry.mjs",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "no_bundle": true,
+  "find_additional_modules": true,
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": [
+        "dist/server/**/*.js",
+        "dist/server/**/*.mjs",
+        "hosting/*.mjs"
+      ]
+    }
+  ],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "delicifood-db",
+      "database_id": "GANTI_DENGAN_DATABASE_ID",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "delicifood-images"
+    }
+  ],
+  "vars": {
+    "CF_ACCESS_TEAM_DOMAIN": "https://NAMA-TIM.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "GANTI_DENGAN_ACCESS_AUD"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
